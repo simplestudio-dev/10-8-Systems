@@ -4,8 +4,310 @@
 <meta charset="utf-8">
 <title>10-8 Systems — Homepage Wireframe</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../colors_and_type.css">
 <style>
+/* === Begin inlined colors_and_type.css === */
+/* ============================================================
+   Wireframe Design System — colors_and_type.css
+   Foundation tokens + semantic classes.
+   Import once at the top of any HTML file in this system.
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+/* PP Neue Montreal — licensed OTFs in /fonts (Pangram Pangram). */
+
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("../fonts/NeueMontreal-Light.otf") format("opentype");
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("../fonts/NeueMontreal-LightItalic.otf") format("opentype");
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("../fonts/NeueMontreal-Regular.otf") format("opentype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("../fonts/NeueMontreal-RegularItalic.otf") format("opentype");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("../fonts/NeueMontreal-Medium.otf") format("opentype");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("../fonts/NeueMontreal-MediumItalic.otf") format("opentype");
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("../fonts/NeueMontreal-Bold.otf") format("opentype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("../fonts/NeueMontreal-BoldItalic.otf") format("opentype");
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+
+:root {
+  /* ---------- Color: neutral ramp (only colors in the system) ---------- */
+  --neutral-900: #363A42;   /* primary fg — body text, headlines */
+  --neutral-700: #53575E;   /* secondary fg — eyebrows, captions */
+  --neutral-500: #7E8492;   /* tertiary fg — disabled, hints, image-slot strokes */
+  --neutral-300: #E4E6ED;   /* dividers, borders, image-slot fills */
+  --neutral-200: #F2F4F5;   /* surface alt — section backgrounds */
+  --neutral-000: #FFFFFF;   /* surface — page background, card fill */
+
+  /* ---------- Color: semantic ---------- */
+  --fg-1: var(--neutral-900);
+  --fg-2: var(--neutral-700);
+  --fg-3: var(--neutral-500);
+  --bg-1: var(--neutral-000);
+  --bg-2: var(--neutral-200);
+  --border: var(--neutral-300);
+  --border-strong: var(--neutral-500);
+
+  /* ---------- Type: family ---------- */
+  --font-sans: "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* ---------- Type: scale (from Typography.pdf) ---------- */
+  --display-300: 164px;     /* 100% lh */
+  --heading-500-xl: 72px;   /* 130% lh */
+  --heading-500-lg: 56px;   /* 130% lh */
+  --heading-500-md: 40px;   /* 130% lh */
+  --heading-300-md: 32px;   /* 130% lh */
+  --body-300-lg: 48px;      /* 130% lh — pull-quote sized body */
+  --body-300-md: 20px;      /* 150% lh — body default */
+  --button-500: 16px;       /* 130% lh */
+  --label-300: 14px;        /* 130% lh — eyebrows, meta, +2% letter-spacing */
+
+  /* ---------- Spacing ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 120px;
+  --space-11: 200px;
+
+  /* ---------- Layout ---------- */
+  --container-max: 1280px;
+  --gutter-desktop: 80px;
+  --gutter-mobile: 24px;
+
+  /* ---------- Radii ---------- */
+  --radius-pill: 9999px;
+  --radius-card: 12px;
+  --radius-flat: 0;
+
+  /* ---------- Borders ---------- */
+  --border-w: 1px;
+
+  /* ---------- Motion ---------- */
+  --t-fast: 150ms ease;
+  --t-base: 200ms ease;
+}
+
+/* ---------- Reset-ish ---------- */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-1);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+
+/* ---------- Semantic type ---------- */
+
+.display, .h-display {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--display-300);
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+h1, .h1 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--heading-500-xl);
+  line-height: 130%;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+h2, .h2 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--heading-500-lg);
+  line-height: 130%;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--heading-500-md);
+  line-height: 130%;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--heading-300-md);
+  line-height: 130%;
+  margin: 0;
+}
+
+.body-lg {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--body-300-lg);
+  line-height: 130%;
+}
+
+p, .body, .body-md {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--body-300-md);
+  line-height: 150%;
+  color: var(--fg-2);
+  margin: 0;
+}
+
+.label, .eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--label-300);
+  line-height: 130%;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: var(--fg-2);
+}
+
+.btn-text {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--button-500);
+  line-height: 130%;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: var(--radius-pill);
+  border: var(--border-w) solid var(--neutral-900);
+  background: var(--neutral-900);
+  color: var(--neutral-000);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--button-500);
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
+  text-decoration: none;
+}
+.btn:hover { background: var(--neutral-700); border-color: var(--neutral-700); }
+.btn:active { transform: scale(0.98); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--neutral-900);
+  border-color: var(--neutral-900);
+}
+.btn--ghost:hover { background: var(--neutral-900); color: var(--neutral-000); }
+
+.btn--quiet {
+  background: transparent;
+  color: var(--neutral-900);
+  border-color: transparent;
+}
+.btn--quiet:hover { color: var(--neutral-700); }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--bg-1);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+}
+
+/* ---------- Image slot ---------- */
+.image-slot {
+  background: var(--neutral-300);
+  border: var(--border-w) solid var(--neutral-500);
+  border-radius: var(--radius-card);
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+.image-slot::before,
+.image-slot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: var(--border-w) solid var(--neutral-500);
+  transform-origin: center;
+}
+.image-slot::before { transform: rotate(  9deg) scaleX(2); top: 50%; }
+.image-slot::after  { transform: rotate(- 9deg) scaleX(2); top: 50%; }
+/* Diagonal-X is approximated with two thin lines; for a true diagonal, the
+   wireframe components use an inline SVG instead — see ImageSlot.jsx */
+
+/* ---------- Layout helpers ---------- */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter-desktop);
+}
+@media (max-width: 768px) {
+  .container { padding: 0 var(--gutter-mobile); }
+}
+
+.section {
+  padding: var(--space-10) 0;
+}
+@media (max-width: 768px) {
+  .section { padding: var(--space-8) 0; }
+}
+
+.section--alt { background: var(--bg-2); }
+
+/* ---------- Divider ---------- */
+.divider {
+  height: 1px;
+  background: var(--border);
+  border: 0;
+  margin: 0;
+}
+/* === End inlined colors_and_type.css === */
+
   /* Local @font-face declarations (paths relative to this HTML file) — ensures
      the typography loads regardless of how the CSS resolves its own fonts/. */
   @font-face { font-family: "Neue Montreal"; src: url("../fonts/NeueMontreal-Light.otf") format("opentype");        font-weight: 300; font-style: normal;  font-display: swap; }
@@ -39,8 +341,10 @@
     display: inline-flex;
     align-items: center;
   }
-  .logo img { display: block; height: 32px; width: auto; }
-  .logo--lg img { height: 40px; }
+  .logo img,
+  .logo .logo-svg { display: block; height: 32px; width: auto; }
+  .logo--lg img,
+  .logo--lg .logo-svg { height: 40px; }
 
   /* ---------- Nav ---------- */
   .nav {
@@ -972,7 +1276,20 @@
 <header class="nav">
   <div class="wrap nav-row">
     <a href="#" aria-label="10-8 Systems — home" class="logo">
-      <img src="logo.svg" alt="10-8 Systems">
+      <svg viewBox="0 0 335 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg logo-svg--dark" role="img" aria-label="10-8 Systems">
+<path d="M94.6638 26.0168H99.9853V54.0435H94.1317V32.6392L88.1006 36.5416L85.4399 32.1661L94.6638 26.0168Z" fill="black"></path>
+<path d="M126.77 40.1485C126.77 50.7915 122.868 54.5166 115.891 54.5166C108.914 54.5166 105.011 50.7915 105.011 40.1485C105.011 29.5055 108.914 25.4257 115.891 25.4257C122.868 25.4848 126.77 29.5646 126.77 40.1485ZM111.042 40.1485C111.042 47.0073 112.52 49.4316 115.95 49.4316C119.32 49.4316 120.739 47.0665 120.739 40.1485C120.739 32.8166 119.32 30.5698 115.95 30.5698C112.52 30.5698 111.042 32.8758 111.042 40.1485Z" fill="black"></path>
+<path d="M130.377 40.1488H142.971V45.3521H130.377V40.1488Z" fill="black"></path>
+<path d="M167.155 33.1723C167.155 36.5426 166.504 37.6069 164.08 39.5582C166.327 41.4502 167.569 42.8693 167.569 46.417C167.569 52.3298 162.72 54.5175 156.807 54.5175C150.895 54.5175 146.164 52.8028 146.164 46.89C146.164 43.0467 147.465 41.4502 149.712 39.5582C147.288 37.6069 146.637 36.0696 146.637 33.1132C146.637 28.2647 150.658 25.4857 156.807 25.4857C162.897 25.4857 167.155 28.2647 167.155 33.1723ZM161.301 45.5301C161.301 44.1701 160.473 42.9876 158.818 42.3372H155.093C153.378 42.9876 152.55 44.1701 152.55 45.5301C152.55 48.1317 153.969 49.2551 156.866 49.2551C159.764 49.2551 161.301 48.1317 161.301 45.5301ZM152.964 34.0593C152.964 35.4192 153.674 36.4244 155.033 37.3704H158.759C160.118 36.4244 160.828 35.4192 160.828 34.0593C160.828 31.9307 159.468 30.7481 156.866 30.7481C154.383 30.7481 152.964 31.9307 152.964 34.0593Z" fill="black"></path>
+<path d="M198.61 30.393C198.61 30.393 192.639 29.7425 190.155 29.7425C187.021 29.7425 185.543 30.866 185.543 32.8172C185.543 34.6502 186.667 35.3006 191.515 36.8379C197.783 38.8482 199.675 40.5629 199.675 45.3523C199.675 51.6199 195.358 54.5762 189.682 54.5762C185.721 54.5762 180.044 53.2754 180.044 53.2754L180.636 48.7226C180.636 48.7226 186.312 49.4912 189.327 49.4912C192.461 49.4912 193.821 48.0131 193.821 45.7662C193.821 43.9924 192.816 43.1646 188.618 41.982C182.114 40.0899 179.63 37.9022 179.63 33.2902C179.63 27.3183 183.651 24.7167 189.505 24.7167C193.348 24.7167 199.024 25.8401 199.024 25.8401L198.61 30.393Z" fill="black"></path>
+<path d="M206.061 32.7577L209.904 49.1361H210.909L214.752 32.7577H220.37L212.92 62.9129H207.362L209.727 53.9846H205.706L200.444 32.7577H206.061Z" fill="black"></path>
+<path d="M238.049 38.0798C238.049 38.0798 232.787 37.3703 230.303 37.3703C227.82 37.3703 227.347 37.9024 227.347 39.085C227.347 40.0902 228.175 40.2675 232.077 40.9771C236.985 41.864 238.758 43.2831 238.758 47.5994C238.758 52.5661 235.506 54.4582 230.244 54.4582C227.11 54.4582 222.084 53.4531 222.084 53.4531L222.262 48.7228C222.262 48.7228 227.524 49.4324 229.712 49.4324C232.432 49.4324 233.141 48.9002 233.141 47.7768C233.141 46.8307 232.668 46.4168 228.766 45.7664C224.154 44.9978 221.73 43.8743 221.73 39.2032C221.73 34.2956 225.455 32.2853 229.948 32.2853C233.023 32.2853 238.167 33.3496 238.167 33.3496L238.049 38.0798Z" fill="black"></path>
+<path d="M248.633 37.6062V46.298C248.633 48.4266 248.633 49.3727 250.407 49.3727C251.589 49.3727 253.659 49.3136 253.659 49.3136L253.895 53.8664C253.895 53.8664 251.057 54.5168 249.579 54.5168C244.435 54.5168 242.957 52.5656 242.957 46.4754V37.6062H240.473V32.7578H242.957V26.845H248.633V32.7578H253.836V37.6062H248.633Z" fill="black"></path>
+<path d="M273.526 49.1367L273.585 53.3348C273.585 53.3348 268.677 54.5174 264.775 54.5174C258.389 54.5174 255.669 51.3245 255.669 43.697C255.669 36.1286 258.862 32.2853 265.07 32.2853C271.338 32.2853 274.353 35.4782 274.353 41.864L273.939 45.8256H261.463C261.523 48.3681 262.705 49.4915 265.78 49.4915C269.15 49.4915 273.526 49.1367 273.526 49.1367ZM268.677 41.5092C268.677 38.0798 267.672 36.9564 265.011 36.9564C262.291 36.9564 261.345 38.2572 261.345 41.5092H268.677Z" fill="black"></path>
+<path d="M277.605 54.0435V32.7575H283.282V33.9401C283.282 33.9401 286.238 32.2253 288.308 32.2253C290.673 32.2253 292.328 32.8757 293.629 34.2357C293.629 34.2357 297.532 32.2253 300.784 32.2253C306.578 32.2253 308.234 35.5956 308.234 42.4545V53.9844H302.557V42.691C302.557 39.4389 302.144 37.3695 299.601 37.3695C297.886 37.3695 295.639 38.1973 295.639 38.1973C295.639 38.1973 295.817 41.3902 295.817 43.0457V54.0435H290.141V43.1049C290.141 39.2616 289.786 37.3695 287.184 37.3695C285.292 37.3695 283.4 38.1381 283.4 38.1381V54.0435H277.605Z" fill="black"></path>
+<path d="M327.687 38.0798C327.687 38.0798 322.424 37.3703 319.941 37.3703C317.458 37.3703 316.985 37.9024 316.985 39.085C316.985 40.0902 317.812 40.2675 321.715 40.9771C326.622 41.864 328.396 43.2831 328.396 47.5994C328.396 52.5661 325.144 54.4582 319.882 54.4582C316.748 54.4582 311.722 53.4531 311.722 53.4531L311.9 48.7228C311.9 48.7228 317.162 49.4324 319.35 49.4324C322.07 49.4324 322.779 48.9002 322.779 47.7768C322.779 46.8307 322.306 46.4168 318.404 45.7664C313.792 44.9978 311.367 43.8743 311.367 39.2032C311.367 34.2956 315.093 32.2853 319.586 32.2853C322.661 32.2853 327.805 33.3496 327.805 33.3496L327.687 38.0798Z" fill="black"></path>
+<path d="M36.5412 2.3656L6.44513 9.93397V47.5393C6.44513 64.1542 36.5412 77.6354 36.5412 77.6354C36.5412 77.6354 66.6373 64.1542 66.6373 47.5393V9.93397L36.5412 2.3656ZM44.4643 26.4306L48.8989 21.9961C49.4311 21.4639 50.2589 21.4639 50.791 21.9961C51.3232 22.5282 51.3232 23.356 50.791 23.8881L46.3564 28.3227C46.1199 28.5592 45.7652 28.7366 45.4104 28.7366C45.0556 28.7366 44.76 28.6184 44.4643 28.3227C43.9322 27.7906 43.9322 26.9628 44.4643 26.4306ZM35.1813 17.4432C35.1813 16.7337 35.7726 16.1424 36.4821 16.1424C37.1916 16.1424 37.7829 16.7337 37.7829 17.4432V23.7108C37.7829 24.4203 37.1916 25.0116 36.4821 25.0116C35.7726 25.0116 35.1813 24.4203 35.1813 23.7108V17.4432ZM36.5412 27.8497C41.1532 27.8497 44.9374 31.5748 44.9374 36.2459V44.642H38.0194V36.2459C38.0194 35.4181 37.369 34.7677 36.5412 34.7677C35.7134 34.7677 35.063 35.4181 35.063 36.2459V44.5829H28.1451V36.2459C28.1451 31.6339 31.9292 27.8497 36.5412 27.8497ZM22.2914 21.9961C22.8235 21.4639 23.6513 21.4639 24.1835 21.9961L28.6181 26.4306C29.1502 26.9628 29.1502 27.7906 28.6181 28.3227C28.3816 28.5592 28.0268 28.7366 27.672 28.7366C27.3173 28.7366 27.0216 28.6184 26.726 28.3227L22.2914 23.8881C21.7592 23.356 21.7592 22.5282 22.2914 21.9961ZM16.3786 36.2459C16.3786 35.5363 16.9699 34.9451 17.6794 34.9451H23.947C24.6565 34.9451 25.2478 35.5363 25.2478 36.2459C25.2478 36.9554 24.6565 37.5467 23.947 37.5467H17.7386C16.9699 37.6058 16.3786 37.0145 16.3786 36.2459ZM49.0763 55.0485H24.0061V50.8504C24.0061 48.5445 25.8982 46.6524 28.2042 46.6524H44.8782C47.1842 46.6524 49.0763 48.5445 49.0763 50.8504V55.0485ZM55.3439 37.6058H49.0763C48.3668 37.6058 47.7755 37.0145 47.7755 36.305C47.7755 35.5955 48.3668 35.0042 49.0763 35.0042H55.3439C56.0534 35.0042 56.6447 35.5955 56.6447 36.305C56.6447 37.0145 56.0534 37.6058 55.3439 37.6058Z" fill="black"></path>
+</svg>
     </a>
 
     <nav class="nav-center">
@@ -1547,7 +1864,20 @@
     <div class="footer-grid">
       <div>
         <a href="#" class="logo logo--lg" aria-label="10-8 Systems — home">
-          <img src="logo-white.svg" alt="10-8 Systems">
+          <svg viewBox="0 0 335 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg logo-svg--light" role="img" aria-label="10-8 Systems">
+<path d="M94.6638 26.0168H99.9853V54.0435H94.1317V32.6392L88.1006 36.5416L85.4399 32.1661L94.6638 26.0168Z" fill="white"></path>
+<path d="M126.77 40.1485C126.77 50.7915 122.868 54.5166 115.891 54.5166C108.914 54.5166 105.011 50.7915 105.011 40.1485C105.011 29.5055 108.914 25.4257 115.891 25.4257C122.868 25.4848 126.77 29.5646 126.77 40.1485ZM111.042 40.1485C111.042 47.0073 112.52 49.4316 115.95 49.4316C119.32 49.4316 120.739 47.0665 120.739 40.1485C120.739 32.8166 119.32 30.5698 115.95 30.5698C112.52 30.5698 111.042 32.8758 111.042 40.1485Z" fill="white"></path>
+<path d="M130.377 40.1488H142.971V45.3521H130.377V40.1488Z" fill="white"></path>
+<path d="M167.155 33.1723C167.155 36.5426 166.504 37.6069 164.08 39.5582C166.327 41.4502 167.569 42.8693 167.569 46.417C167.569 52.3298 162.72 54.5175 156.807 54.5175C150.895 54.5175 146.164 52.8028 146.164 46.89C146.164 43.0467 147.465 41.4502 149.712 39.5582C147.288 37.6069 146.637 36.0696 146.637 33.1132C146.637 28.2647 150.658 25.4857 156.807 25.4857C162.897 25.4857 167.155 28.2647 167.155 33.1723ZM161.301 45.5301C161.301 44.1701 160.473 42.9876 158.818 42.3372H155.093C153.378 42.9876 152.55 44.1701 152.55 45.5301C152.55 48.1317 153.969 49.2551 156.866 49.2551C159.764 49.2551 161.301 48.1317 161.301 45.5301ZM152.964 34.0593C152.964 35.4192 153.674 36.4244 155.033 37.3704H158.759C160.118 36.4244 160.828 35.4192 160.828 34.0593C160.828 31.9307 159.468 30.7481 156.866 30.7481C154.383 30.7481 152.964 31.9307 152.964 34.0593Z" fill="white"></path>
+<path d="M198.61 30.393C198.61 30.393 192.639 29.7425 190.155 29.7425C187.021 29.7425 185.543 30.866 185.543 32.8172C185.543 34.6502 186.667 35.3006 191.515 36.8379C197.783 38.8482 199.675 40.5629 199.675 45.3523C199.675 51.6199 195.358 54.5762 189.682 54.5762C185.721 54.5762 180.044 53.2754 180.044 53.2754L180.636 48.7226C180.636 48.7226 186.312 49.4912 189.327 49.4912C192.461 49.4912 193.821 48.0131 193.821 45.7662C193.821 43.9924 192.816 43.1646 188.618 41.982C182.114 40.0899 179.63 37.9022 179.63 33.2902C179.63 27.3183 183.651 24.7167 189.505 24.7167C193.348 24.7167 199.024 25.8401 199.024 25.8401L198.61 30.393Z" fill="white"></path>
+<path d="M206.061 32.7577L209.904 49.1361H210.909L214.752 32.7577H220.37L212.92 62.9129H207.362L209.727 53.9846H205.706L200.444 32.7577H206.061Z" fill="white"></path>
+<path d="M238.049 38.0798C238.049 38.0798 232.787 37.3703 230.303 37.3703C227.82 37.3703 227.347 37.9024 227.347 39.085C227.347 40.0902 228.175 40.2675 232.077 40.9771C236.985 41.864 238.758 43.2831 238.758 47.5994C238.758 52.5661 235.506 54.4582 230.244 54.4582C227.11 54.4582 222.084 53.4531 222.084 53.4531L222.262 48.7228C222.262 48.7228 227.524 49.4324 229.712 49.4324C232.432 49.4324 233.141 48.9002 233.141 47.7768C233.141 46.8307 232.668 46.4168 228.766 45.7664C224.154 44.9978 221.73 43.8743 221.73 39.2032C221.73 34.2956 225.455 32.2853 229.948 32.2853C233.023 32.2853 238.167 33.3496 238.167 33.3496L238.049 38.0798Z" fill="white"></path>
+<path d="M248.633 37.6062V46.298C248.633 48.4266 248.633 49.3727 250.407 49.3727C251.589 49.3727 253.659 49.3136 253.659 49.3136L253.895 53.8664C253.895 53.8664 251.057 54.5168 249.579 54.5168C244.435 54.5168 242.957 52.5656 242.957 46.4754V37.6062H240.473V32.7578H242.957V26.845H248.633V32.7578H253.836V37.6062H248.633Z" fill="white"></path>
+<path d="M273.526 49.1367L273.585 53.3348C273.585 53.3348 268.677 54.5174 264.775 54.5174C258.389 54.5174 255.669 51.3245 255.669 43.697C255.669 36.1286 258.862 32.2853 265.07 32.2853C271.338 32.2853 274.353 35.4782 274.353 41.864L273.939 45.8256H261.463C261.523 48.3681 262.705 49.4915 265.78 49.4915C269.15 49.4915 273.526 49.1367 273.526 49.1367ZM268.677 41.5092C268.677 38.0798 267.672 36.9564 265.011 36.9564C262.291 36.9564 261.345 38.2572 261.345 41.5092H268.677Z" fill="white"></path>
+<path d="M277.605 54.0435V32.7575H283.282V33.9401C283.282 33.9401 286.238 32.2253 288.308 32.2253C290.673 32.2253 292.328 32.8757 293.629 34.2357C293.629 34.2357 297.532 32.2253 300.784 32.2253C306.578 32.2253 308.234 35.5956 308.234 42.4545V53.9844H302.557V42.691C302.557 39.4389 302.144 37.3695 299.601 37.3695C297.886 37.3695 295.639 38.1973 295.639 38.1973C295.639 38.1973 295.817 41.3902 295.817 43.0457V54.0435H290.141V43.1049C290.141 39.2616 289.786 37.3695 287.184 37.3695C285.292 37.3695 283.4 38.1381 283.4 38.1381V54.0435H277.605Z" fill="white"></path>
+<path d="M327.687 38.0798C327.687 38.0798 322.424 37.3703 319.941 37.3703C317.458 37.3703 316.985 37.9024 316.985 39.085C316.985 40.0902 317.812 40.2675 321.715 40.9771C326.622 41.864 328.396 43.2831 328.396 47.5994C328.396 52.5661 325.144 54.4582 319.882 54.4582C316.748 54.4582 311.722 53.4531 311.722 53.4531L311.9 48.7228C311.9 48.7228 317.162 49.4324 319.35 49.4324C322.07 49.4324 322.779 48.9002 322.779 47.7768C322.779 46.8307 322.306 46.4168 318.404 45.7664C313.792 44.9978 311.367 43.8743 311.367 39.2032C311.367 34.2956 315.093 32.2853 319.586 32.2853C322.661 32.2853 327.805 33.3496 327.805 33.3496L327.687 38.0798Z" fill="white"></path>
+<path d="M36.5412 2.36554L6.44513 9.93391V47.5392C6.44513 64.1542 36.5412 77.6353 36.5412 77.6353C36.5412 77.6353 66.6373 64.1542 66.6373 47.5392V9.93391L36.5412 2.36554ZM44.4643 26.4306L48.8989 21.996C49.4311 21.4638 50.2589 21.4638 50.791 21.996C51.3232 22.5281 51.3232 23.3559 50.791 23.8881L46.3564 28.3227C46.1199 28.5592 45.7652 28.7366 45.4104 28.7366C45.0556 28.7366 44.76 28.6183 44.4643 28.3227C43.9322 27.7905 43.9322 26.9627 44.4643 26.4306ZM35.1813 17.4431C35.1813 16.7336 35.7726 16.1423 36.4821 16.1423C37.1916 16.1423 37.7829 16.7336 37.7829 17.4431V23.7107C37.7829 24.4202 37.1916 25.0115 36.4821 25.0115C35.7726 25.0115 35.1813 24.4202 35.1813 23.7107V17.4431ZM36.5412 27.8496C41.1532 27.8496 44.9374 31.5747 44.9374 36.2458V44.642H38.0194V36.2458C38.0194 35.418 37.369 34.7676 36.5412 34.7676C35.7134 34.7676 35.063 35.418 35.063 36.2458V44.5828H28.1451V36.2458C28.1451 31.6338 31.9292 27.8496 36.5412 27.8496ZM22.2914 21.996C22.8235 21.4638 23.6513 21.4638 24.1835 21.996L28.6181 26.4306C29.1502 26.9627 29.1502 27.7905 28.6181 28.3227C28.3816 28.5592 28.0268 28.7366 27.672 28.7366C27.3173 28.7366 27.0216 28.6183 26.726 28.3227L22.2914 23.8881C21.7592 23.3559 21.7592 22.5281 22.2914 21.996ZM16.3786 36.2458C16.3786 35.5363 16.9699 34.945 17.6794 34.945H23.947C24.6565 34.945 25.2478 35.5363 25.2478 36.2458C25.2478 36.9553 24.6565 37.5466 23.947 37.5466H17.7386C16.9699 37.6057 16.3786 37.0145 16.3786 36.2458ZM49.0763 55.0485H24.0061V50.8504C24.0061 48.5444 25.8982 46.6523 28.2042 46.6523H44.8782C47.1842 46.6523 49.0763 48.5444 49.0763 50.8504V55.0485ZM55.3439 37.6057H49.0763C48.3668 37.6057 47.7755 37.0145 47.7755 36.3049C47.7755 35.5954 48.3668 35.0041 49.0763 35.0041H55.3439C56.0534 35.0041 56.6447 35.5954 56.6447 36.3049C56.6447 37.0145 56.0534 37.6057 55.3439 37.6057Z" fill="white"></path>
+</svg>
         </a>
         <p style="font-size:14px; line-height:150%; color:#C9CCD3; margin:24px 0 0; max-width:320px; font-weight: 400;">
           Cloud-native CAD and records management built for modern public safety agencies, designed to be reliable, scalable, and ready for the field.
